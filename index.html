@@ -2,18 +2,31 @@
 <html>
 <head>
 <title>Video Funnel</title>
-<link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/mdui/0.4.2/css/mdui.min.css">
-<script src="https://cdnjs.loli.net/ajax/libs/mdui/0.4.2/js/mdui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.bootcss.com/mdui/0.4.2/css/mdui.min.css">
+<script src="https://cdn.bootcss.com/mdui/0.4.2/js/mdui.min.js"></script>
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
 <script>
+var $$ = mdui.JQ;
 function play()
 {
-var $$ = mdui.JQ;
 var url = $$("#url").val();if (url =="" ||url ==null) {mdui.snackbar({message:'未输入URL！'});return;}
 var blocksize = $$("#blocksize").val();if (blocksize =="" ||blocksize ==null) {mdui.snackbar({message:'未输入Block Size！'});return;}
 var piecesize = $$("#piecesize").val();if (piecesize =="" ||piecesize ==null) {mdui.snackbar({message:'未输入Piece Size！'});return;}
-location.href ="api?url=" + url + "&block_size=" + blocksize + "&piece_size=" + piecesize;
+location.href = "api?url=" + url + "&block_size=" + blocksize + "&piece_size=" + piecesize;
 };
 </script>
+<!--
+<script>
+function copy()
+{
+var clipBoardContent=this.location.href;
+var url = $$("#url").val();if (url =="" ||url ==null) {mdui.snackbar({message:'未输入URL！'});return;}
+var blocksize = $$("#blocksize").val();if (blocksize =="" ||blocksize ==null) {mdui.snackbar({message:'未输入Block Size！'});return;}
+var piecesize = $$("#piecesize").val();if (piecesize =="" ||piecesize ==null) {mdui.snackbar({message:'未输入Piece Size！'});return;}
+var result = "api?url=" + url + "&block_size=" + blocksize + "&piece_size=" + piecesize;
+};
+</script>
+-->
 </head>
 <body class="mdui-theme-primary-indigo">
 
@@ -54,6 +67,11 @@ Video Funnel
 <button id="submitButton" type="submit" onclick="play()" class=" mdui-ripple mdui-color-indigo-400 submitButton mdui-btn mdui-btn-raised  mdui-center" style="margin-top:20px">
 播放
 </button>
+<!-- 
+<button id="copyButton" type="submit" onclick="copy()" class=" mdui-ripple mdui-color-indigo-400 submitButton mdui-btn mdui-btn-raised  mdui-center" style="margin-top:20px">
+复制URL
+</button>
+--> 
 </div>
 </div>
 </body>
